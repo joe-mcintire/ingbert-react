@@ -1,5 +1,3 @@
-export const good = () => {
-  return true;
-};
+import Button from "./components/Button";
 
-console.log(good());
+export { Button };
