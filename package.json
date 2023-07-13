@@ -1,11 +1,11 @@
 {
   "name": "ingbert-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joe-mcintire/ingbert-react.git"
-},
+  },
   "main": "./dist/bundle.js",
   "types": "./dist/index.d.ts",
   "files": [
