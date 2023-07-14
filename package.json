@@ -15,7 +15,7 @@
     "classnames": "^2.3.2"
   },
   "scripts": {
-    "build": "webpack -- mode production",
+    "build": "webpack --mode production",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -40,6 +40,8 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2",
     "storybook": "^7.0.27",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",

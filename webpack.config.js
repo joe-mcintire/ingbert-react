@@ -9,6 +9,57 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      // css module files
+      {
+        test: /\.module\.css$/, // /\.module\.s(a|c)ss$/
+        include: /\.module\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+            },
+          },
+        ],
+      },
+      // css files
+      {
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      // sass module files
+      {
+        test: /\.module\.s[ac]ss$/,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
+      // sass files
+      {
+        test: /\.s[ac]ss$/,
+        exclude: /\.module\.s[ac]ss$/,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
     ],
   },
   resolve: {
@@ -18,7 +69,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     library: {
-      type: "commonjs2"
+      type: "commonjs2",
     },
   },
 };
