@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
-import custom from "../webpack.config.js";
+import { sassModuleRule, sassRule } from "../build-helpers";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -20,12 +20,7 @@ const config: StorybookConfig = {
       ...config,
       module: {
         ...config.module,
-        rules: [
-          ...(config.module?.rules ?? []),
-          ...custom.module.rules.filter(
-            (rule) => rule.test.toString().indexOf("css") == -1
-          ),
-        ],
+        rules: [...(config.module?.rules ?? []), sassRule, sassModuleRule],
       },
     };
   },

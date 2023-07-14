@@ -18,5 +18,6 @@
     "declaration": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["./src/**/*.stories.tsx", "./src/**/*.stories.ts"]
 }

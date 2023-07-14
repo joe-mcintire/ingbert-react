@@ -1,4 +1,5 @@
 const path = require("path");
+const { sassModuleRule, sassRule } = require("./build-helpers");
 
 module.exports = {
   entry: "./src/index.ts",
@@ -7,7 +8,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
+        exclude: [/node_modules/],
       },
       // css module files
       {
@@ -31,35 +32,9 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       // sass module files
-      {
-        test: /\.module\.s[ac]ss$/,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-            },
-          },
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
-      },
+      sassModuleRule,
       // sass files
-      {
-        test: /\.s[ac]ss$/,
-        exclude: /\.module\.s[ac]ss$/,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
-      },
+      sassRule,
     ],
   },
   resolve: {
