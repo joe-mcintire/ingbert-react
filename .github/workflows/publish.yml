@@ -26,5 +26,6 @@ jobs:
 
   deploy-storybook:
     uses: joe-mcintire/ingbert-react/.github/workflows/deployStorybook.yml@main
+    secrets: inherit
     with:
       git-tag: ${{github.ref_name}}
