@@ -1,13 +1,22 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-import styles from "./Button.module.css";
 import classNames from "classnames";
-import sassStyles from "./Button.module.scss";
+import css from "./Button.module.scss";
+import { Theme } from "../../enums";
+import { ThemeCssName } from "../../dictionaries";
 
-const Button = () => {
+type ButtonProps = {
+  className?: string;
+  theme?: Theme;
+  children?: ReactNode;
+};
+
+const Button = ({ className, theme = Theme.Cool, children }: ButtonProps) => {
   return (
-    <button className={classNames(styles.primary, styles.enabled, sassStyles.thing, sassStyles.better)}>
-      Button
+    <button
+      className={classNames(css.button, css[ThemeCssName[theme]], className)}
+    >
+      {children}
     </button>
   );
 };
